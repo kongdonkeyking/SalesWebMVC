@@ -19,6 +19,7 @@ namespace SalesWebMVC.Controllers
             _departmentService = departmentService;
         }
 
+        //GET
         public IActionResult Index()
         {
             var list = _sellerService.FindAll();
@@ -26,6 +27,7 @@ namespace SalesWebMVC.Controllers
             return View(list);
         }
 
+        //GET
         public IActionResult Create()
         {
             var departments = _departmentService.FindAll();
@@ -41,6 +43,19 @@ namespace SalesWebMVC.Controllers
 
             var obj = _sellerService.FindById(id.Value);
             if(obj == null)
+                return NotFound();
+
+            return View(obj);
+        }
+
+        //GET
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var obj = _sellerService.FindById(id.Value);
+            if (obj == null)
                 return NotFound();
 
             return View(obj);

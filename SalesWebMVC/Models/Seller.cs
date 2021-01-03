@@ -31,7 +31,11 @@ namespace SalesWebMVC.Models
         public double BaseSalary { get; set; }
         
         public Department Department { get; set; }
-        public int DepartmentId { get; set; }
+
+        //Esta prop abaixo, serve para dizer à framework que na hora de gravar, 
+        //a framework irá gravar o que for selecionado na Dropdwonlist.
+        public int DepartmentId { get; set; } 
+
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
         public Seller()
